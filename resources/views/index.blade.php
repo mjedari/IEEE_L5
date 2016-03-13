@@ -24,15 +24,39 @@
             @else
             <div class="item">
             @endif
+                {{--*slider icons start here*--}}
+                <div class="slider-info">
+                    @if(strtolower($item['category']['title']) == 'news')
+                        <span class="glyphicon glyphicon-bullhorn" aria-hidden="true"></span>
+                        {{ str_singular($item['category']['title']) }}
+                    @elseif(strtolower($item['category']['title']) == 'workshops')
+                        <span class="glyphicon glyphicon-education slider-icon" aria-hidden="true"></span>
+                        {{ str_singular($item['category']['title']) }}
+                    @elseif(strtolower($item['category']['title']) == 'videos')
+                        <span class="glyphicon glyphicon-film slider-icon" aria-hidden="true"></span>
+                        {{ str_singular($item['category']['title']) }}
+                    @elseif(strtolower($item['category']['title']) == 'album')
+                        <span class="glyphicon glyphicon-film slider-icon" aria-hidden="true"></span>
+                        {{ str_singular($item['category']['title']) }}
+                    @elseif(strtolower($item['category']['title']) == 'articles')
+                        <span class="glyphicon glyphicon-ok slider-icon" aria-hidden="true"></span>
+                        {{ str_singular($item['category']['title']) }}
+                    @elseif(strtolower($item['category']['title']) == 'articles')
+                        <span class="glyphicon glyphicon-ok slider-icon" aria-hidden="true"></span>
+                        {{ str_singular($item['category']['title']) }}
+                    @endif
+                </div>
                 <img src="{{$item['images'][0]}}" alt="..." class="slider-image">
                 <div class="carousel-caption">
-                    <h1><a href="" style="text-decoration: none;color: white">{{$item['title']}}</a></h1>
-                    {!! $item['summary'] !!}
+                    <h1>
+                        <a href="{{ route(strtolower($item['category']['title'])).'/'.$item['slug'] }}">
+                            {{$item['title']}}</a>
+                    </h1>
+                    <p>{!! $item['summary'] !!}</p>
                 </div>
             </div>
         @endforeach
     </div>
-
     <!-- Controls -->
     <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
         <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
@@ -92,32 +116,41 @@
                     <a href="{{route('news')}}">IACT NEWS</a>
                 </div>
                 <!-- strat news -->
-                <div class="row news-row">
-                    @foreach($news as $item)
-                        <div class="col-xs-6 col-sm-4 col-md-4 news-thumb">
-                            <div class="thumbnail">
-                                <img  class="news-images" src="
-                                @if(!isset($item['images'][0]))
-                                    /images/no_image_available.jpg
-                                @else
-                                    {{ $item['images'][0] }}
-                                @endif
-                                " alt="...">
-                                <div class="caption">
-                                    <h5>{{ $item['title'] }}</h5>
-                                    <p class="news-summary">{!! $item['summary'] !!}</p>
-                                </div>
-                                <a href="{{ '/news/'.$item['slug'] }}" class="btn btn-primary news-button btn-block btn-sm" role="button">Read more</a>
-                            </div>
-                        </div>
-                    @endforeach
+                <div class="row news-row news-ajax">
+                    {{--@foreach($news as $item)--}}
+                        {{--<div class="col-xs-6 col-sm-4 col-md-4 news-thumb">--}}
+                            {{--<div class="thumbnail">--}}
+                                {{--<img  class="news-images" src="--}}
+                                {{--@if(!isset($item['images'][0]))--}}
+                                    {{--/images/no_image_available.jpg--}}
+                                {{--@else--}}
+                                    {{--{{ $item['images'][0] }}--}}
+                                {{--@endif--}}
+                                {{--" alt="...">--}}
+                                {{--<div class="caption">--}}
+                                    {{--<h5>{{ $item['title'] }}</h5>--}}
+                                    {{--<p class="news-summary">{!! $item['summary'] !!}</p>--}}
+                                {{--</div>--}}
+                                {{--<a href="{{ '/news/'.$item['slug'] }}" class="btn btn-primary news-button btn-block btn-sm" role="button">Read more</a>--}}
+                            {{--</div>--}}
+                        {{--</div>--}}
+                    {{--@endforeach--}}
+                    @include('news-ajax')
+                </div>
+                <div class="paginate">
+{{--                {!! $news->links() !!}--}}
+                    <ul class="pager">
+                        <li><a href="{{json_decode($news)->prev_page_url}}" class="prev"><i class="glyphicon glyphicon-chevron-left"></i>Prev</a></li>
+                        <li><a href="{{json_decode($news)->next_page_url}}" class="next">Next<i class="glyphicon glyphicon-chevron-right"></i></a></li>
+                    </ul>
+
                 </div>
             </div>
         </div>
     </div>
     <!-- start article column -->
     <div class="col-md-6 articles-column">
-        <div class="container-fulied">
+        <div class="container-fluid">
             <div class="col-md-12">
                 <div class="articles-top-nav text-center">
                     <a href="{{route('articles')}}">ARTICLES</a>
@@ -177,7 +210,9 @@
                         {!! Form::label('email-subscribe', 'Stay up to date!') !!}
                         {!! Form::email($name = 'email', $value = null, $attributes = array('class'=>'form-control lg email-input', 'placeholder'=>'input your email here', 'id'=>'email-subscribe')) !!}
                         {!! Form::submit('subscribe' ,array('class' => 'btn btn-primary btn-lg subscribe-button')) !!}
-                        <span class="glyphicon glyphicon-ok" aria-hidden="true" style="visibility: hidden"></span>
+                        <div class="status-div">
+                            <span class="glyphicon status-mark" aria-hidden="true" style="display: none"></span>
+                        </div>
                     </div>
                 </div>
                 {!! Form::close() !!}

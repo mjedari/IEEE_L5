@@ -7,47 +7,42 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Repositories\PageRepository;
+use App\Repositories\PostRepository;
 
 class PublicationsPageController extends Controller
 {
-    function __construct(PageRepository $pageRepository)
+    protected $currentPost = [];
+    function __construct(PageRepository $pageRepository, PostRepository $postRepository)
     {
         $this->pageRepository = $pageRepository;
+        $this->postRepository = $postRepository;
     }
 
-    public function getIndex($slug = 'publications')
+    public function index()
     {
-        $pages = $this->pageRepository->getPagesWithAllRelations($slug);
+        $pageName = 'publications';
+        $pages = $this->pageRepository->getPagesWithAllRelations($pageName);
         if(empty($pages)){
             return redirect('errors/404');
         }
-        return view('pages.index',compact('pages'));
+        $posts = '';
+        $didYouKnow = $this->pageRepository->getDidYouKnow();
+        return view('pages.index',compact('pages', 'posts', 'didYouKnow'),['currentPost' => $this->currentPost]);
     }
 
-    public function getArticles($slug = 'Articles')
+    public function articles($slug = '')
     {
-        $pages = $this->pageRepository->getPagesWithAllRelations($slug);
+        $group = 'articles';
+        $category = 'articles';
+        $pages = $this->pageRepository->getPagesWithAllRelations($group);
         if(empty($pages)){
             return redirect('errors/404');
         }
-        return view('pages.index',compact('pages'));
-    }
-
-    public function getNewsletter($slug = 'Newsletter')
-    {
-        $pages = $this->pageRepository->getPagesWithAllRelations($slug);
-        if(empty($pages)){
-            return redirect('errors/404');
+        $posts = $this->postRepository->getPostsTitleWithSameCategory($category);
+        if(!empty($slug)){
+            $this->currentPost = $this->postRepository->getPostWithSameCategory($group, $slug);
         }
-        return view('pages.index',compact('pages'));
-    }
-
-    public function getSubscription($slug = 'Subscription')
-    {
-        $pages = $this->pageRepository->getPagesWithAllRelations($slug);
-        if(empty($pages)){
-            return redirect('errors/404');
-        }
-        return view('pages.index',compact('pages'));
+        $didYouKnow = $this->pageRepository->getDidYouKnow();
+        return view('pages.index',compact('pages', 'posts', 'didYouKnow'),['currentPost' => $this->currentPost]);
     }
 }

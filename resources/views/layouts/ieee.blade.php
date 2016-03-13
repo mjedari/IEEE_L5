@@ -83,19 +83,17 @@
                             <li class="menu-discription litle-font">Discription</li>
                         </ul>
                     </li>
-                </ul>
 
-                {{--<form class="navbar-form navbar-left top-subscribe-form" role="search">--}}
-                    {{--<div class="form-group">--}}
-                        {{--<input type="text" class="form-control" placeholder="Enter your Email ...">--}}
-                    {{--</div>--}}
-                    {{--<button type="submit" class="btn btn-default">Subscribe</button>--}}
-                {{--</form>--}}
-                {{--<ul class="nav navbar-nav">--}}
-                {{--<div class="alert alert-warning alert-dismissible" role="alert" style="padding: 6px 28px 6px 6px;margin: 8px 0 0 0 ">--}}
-                    {{--<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>--}}
-                {{--</div>--}}
-                {{--</ul>--}}
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Media <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="{{route('images')}}">Album</a></li>
+                            <li><a href="{{route('videos')}}">Videos</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li class="menu-discription litle-font">Discription</li>
+                        </ul>
+                    </li>
+                </ul>
 
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="{{route('contact')}}">Contact Us</a></li>
@@ -162,11 +160,12 @@
                         </div>
                         <div class="footer-content">
                             <ul class="list-unstyled ieee-links">
-                                <li><a href="#">IEEE.org</a></li>
-                                <li><a href="#">IEEE Xplore Digital Library</a></li>
-                                <li><a href="#">IEEE Standards Association</a></li>
-                                <li><a href="#">IEEE Spectrum Online</a></li>
-                                <li><a href="#">More IEEE Sites</a></li>
+                                <li><a href="http://ieee.org/" target="_blank">IEEE.org</a></li>
+                                <li><a href="http://ieeexplore.ieee.org/" target="_blank">IEEE Xplore Digital Library</a></li>
+                                <li><a href="http://standards.ieee.org/" target="_blank">IEEE Standards Association</a></li>
+                                <li><a href="http://spectrum.ieee.org/" target="_blank">IEEE Spectrum Online</a></li>
+                                <li><a href="http://ieee.org.ir/" target="_blank">IEEE Iran Section</a></li>
+                                <li><a href="http://www.ieee.org/sitemap.html" target="_blank">More IEEE Sites</a></li>
                             </ul>
                         </div>
                     </div>

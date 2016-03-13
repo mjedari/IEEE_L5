@@ -1,7 +1,13 @@
 Todo List
 
 1.Complete validation subscribe form (Ex:errors)
-2.Pack scripts in a file
-3.Body padding reason!(26px)
++ 2.Pack scripts in a file
++ 3.Body padding reason!(26px)
 4.make best performance in postRepository
 5.find better solution for display pages & related posts!
+6.Image croper
+7.Turn off App Exceptions when it is up!
+8.complete slider icons
+9.Make dynamic middle passage
+10.Make media access link
+11.news pageinate

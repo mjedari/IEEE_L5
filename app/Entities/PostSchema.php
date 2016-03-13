@@ -2,9 +2,11 @@
 
 namespace App\Entities;
 
+use App\Models\Category;
+use App\Models\Post;
 use Kalnoy\Cruddy\Entity;
 class PostSchema extends Entity {
-
+    protected $result = '';
     /**
      * @var string
      */
@@ -43,19 +45,40 @@ class PostSchema extends Entity {
         $schema->boolean('slider')->label("Slider Show")->help('نشان دادن در اسلایدر');
         $field = $schema->image('images');
         $field->many();
-        $schema->file('files');
+        $field = $schema->file('files');
+        $field->many();
         $schema->relates('tags')->isMultiple();
         $schema->embed('postComments');
         $schema->timestamps();
-        $schema->compute('url', function($model) {
-            return '<a target="_blank" href="/posts/'.$model->slug.'">
-            <span class="glyphicon glyphicon-share" aria-hidden="true"></span>
-            Click To Open Post Page</a>';
-        })->label('Post url');
+
         $schema->compute('utitle', function($model) {
-            return '<a target="_blank" href="/posts/'.$model->slug.'">
+            $categories = new Category();
+            $postCatName = $categories->where('id', $model->category_id)->get()->toArray();
+            $subPage = strtolower($postCatName[0]['title']);
+            if (in_array($subPage, ['workshops', 'tutorials'])){
+                $postPage = 'education';
+            } elseif(in_array($subPage, ['Conferences', 'Competitions', 'Camps', 'Sessions', 'Calendar'])) {
+                $postPage = 'events';
+            } elseif(in_array($subPage, ['articles', 'newsletter', 'subscription'])) {
+                $postPage = 'publications';
+            } elseif(in_array($subPage, ['images', 'videos'])) {
+                $postPage = 'media';
+            }
+            else {
+                $postPage = null;
+            }
+            $this->result = $postPage.'/'.$subPage.'/'.$model->slug;
+            return '<a target="_blank" href="/'.$this->result.'">
             '.$model->title.'</a>';
         })->label('title');
+
+        $schema->compute('url', function($model) {
+
+            return '<a target="_blank" href="/'.$this->result.'">
+            <span class="glyphicon glyphicon-link" aria-hidden="true"></span>
+            Click To Open Post Page</a>';
+        })->label('Post url');
+
     }
 
     protected function layout($l)
@@ -68,6 +91,7 @@ class PostSchema extends Entity {
             $t->row(['title']);
             $t->row(['slug','url']);
             $t->row(['category', 'slider', 'created_at']);
+            $t->row(['subpage']);
             $t->row(['summary']);
             $t->row(['body']);
             $t->row(['images', 'files']);
@@ -90,7 +114,15 @@ class PostSchema extends Entity {
         $schema->col('id');
         $schema->col('utitle');
         $schema->col('category')->help('Show url branch');
-        $schema->col('images')->format('Image' , ['width'=>'100', 'height'=>'50']);
+        //This is Cruddy main method:
+        //$schema->col('images')->format('Image' , ['width'=>'100', 'height'=>'50']);
+        $schema->compute('images', function($model){
+            //We use this method until cruddy fixed this bug.
+            if(!empty($model->images)){
+                $image = $model->images[0];
+                return $image;
+            }
+        })->format('Image', ['width'=>'100', 'height'=>'50']);
         $schema->compute('uploaded files', function($model){
             return count($model->files);
         });

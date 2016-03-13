@@ -17,6 +17,11 @@ class PostRepository
         with('tags')->with('category')->get()->toArray();
     }
 
+    public function getSliderWithCategoryName()
+    {
+        return $this->posts->where('slider', true)->orderBy('created_at','desc')->with('category')->take(3)->get()->toArray();
+    }
+
     protected $result = [];
     public function getPostWithSameCategory($group, $slug)
     {

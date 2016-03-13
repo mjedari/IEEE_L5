@@ -29,6 +29,13 @@ a.disabled-link:hover {
 	font-size: 11px;
 }
 
+.green-color {
+	color: green;
+}
+.red-color {
+	color: #CC0000;
+}
+
 /* Navbar Style */
 nav.navbar {
 	margin: 0;
@@ -69,9 +76,16 @@ li.menu-discription {
 	.menu-discription,
 	.about-img,
 	.top-subscribe-form,
+	.slider-info,
 	.carousel-caption > p
 	{
 		display: none;
+	}
+	.carousel-caption > h1 {
+		font-size: 22px;
+	}
+	.status-div {
+		float: none !important;
 	}
 }
 
@@ -88,6 +102,16 @@ li.menu-discription {
 
 }
 
+.slider-info {
+	color: white;
+	margin: 30px 30px -90px  30px;
+	padding: 0;
+	position: absolute;
+}
+ .carousel-caption > h1 > a {
+	 text-decoration: none;
+	 color: white;
+ }
 .page-title-place {
 	float: none;
 	margin: auto;
@@ -189,7 +213,7 @@ li.menu-discription {
 	margin: 0;
 }
 .news-thumb {
-	padding: 10px;
+	padding: 4px;
 }
 
 .news-column,
@@ -205,7 +229,7 @@ li.menu-discription {
 	border: 1px solid #EEEEEE;
 	border-left: 20px solid #F5F5F5;
 	border-right: 20px solid #F5F5F5;
-	padding: 5px
+	padding: 5px;
 }
 .news-top-nav:hover,
 .articles-top-nav:hover {
@@ -219,7 +243,7 @@ li.menu-discription {
 }
 
 .news-row {
-	padding: 0 5px 0 5px;
+	padding: 0 10px 0 10px;
 }
 .article-panel {
 	margin-top: 10px;
@@ -291,9 +315,19 @@ li.menu-discription {
 .subscribe-form-column > .btn {
 	margin-bottom: 10px;
 }
-.glyphicon-ok {
-	font-size: 38px;
-	color: green;
+.glyphicon-ok,
+.glyphicon-remove
+{
+
+}
+.status-div {
+	width: 46px;
+	height: 46px;
+	float: right;
+	font-size: 34px;
+	margin-right: 50px;
+	padding: 3px;
+
 }
 
 /*Footer*/

@@ -67,6 +67,7 @@ Route::group(['middleware' => ['web']], function () {
         return var_dump(public_path('cruddy'));
     });
 //    pages route
+    Route::get('/newsIndex{page}', 'NewsPageController@indexNews');
     Route::get('/news', 'NewsPageController@index')->name('news');
     Route::get('/news/{slug}', 'NewsPageController@newsItem')->name('newsItem');
 
