@@ -1,7 +1,7 @@
 <?php return array(
 
     // The title of the application. It can be a translation key.
-    'brand' => 'IACT IEEE',
+    'brand' => "IACT IEEE",
 
     // The link to the main page
     'brand_url' => '/',

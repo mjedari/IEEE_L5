@@ -162,7 +162,8 @@ return [
         Barryvdh\Debugbar\ServiceProvider::class,
         Cartalyst\Sentry\SentryServiceProvider::class,
         Barryvdh\Elfinder\ElfinderServiceProvider::class,
-        'Cviebrock\EloquentSluggable\SluggableServiceProvider',
+        Cviebrock\EloquentSluggable\SluggableServiceProvider::class,
+        Intervention\Image\ImageServiceProvider::class
     ],
 
     /*
@@ -213,6 +214,7 @@ return [
         'Html' => Collective\Html\HtmlFacade::class,
         'Debugbar' => Barryvdh\Debugbar\Facade::class,
         'Sentry' => Cartalyst\Sentry\Facades\Laravel\Sentry::class,
+        'Image' => Intervention\Image\Facades\Image::class,
     ],
 
 ];

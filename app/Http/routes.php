@@ -64,7 +64,7 @@ Route::group(['middleware' => ['web']], function () {
 //    Email Subscribe Route
     Route::post('/subscribe', 'subscribeController@store')->name('emailSubscribe');
     Route::get('/test', function (){
-        return var_dump(public_path('cruddy'));
+        return view('test');
     });
 //    pages route
     Route::get('/newsIndex{page}', 'NewsPageController@indexNews');
@@ -89,7 +89,7 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('/publications', 'PublicationsPageController@index')->name('publications');
     Route::get('/publications/articles/{slug?}', 'PublicationsPageController@articles')->name('articles');
     Route::get('/publications/newsletter/{slug?}', 'PublicationsPageController@newsletter')->name('newsletter');
-    Route::get('/publications/subscription/{slug?}', 'PublicationsPageController@subscription')->name('subscription');
+    Route::get('/publications/subscription', 'PublicationsPageController@subscription')->name('subscription');
 
 
 //    Media menu

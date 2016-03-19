@@ -45,4 +45,16 @@ class PublicationsPageController extends Controller
         $didYouKnow = $this->pageRepository->getDidYouKnow();
         return view('pages.index',compact('pages', 'posts', 'didYouKnow'),['currentPost' => $this->currentPost]);
     }
+
+    public function subscription()
+    {
+        $pageName = 'subscription';
+        $pages = $this->pageRepository->getPagesWithAllRelations($pageName);
+        if(empty($pages)){
+            return redirect('errors/404');
+        }
+        $posts = '';
+        $didYouKnow = $this->pageRepository->getDidYouKnow();
+        return view('pages.index',compact('pages', 'posts', 'didYouKnow'),['currentPost' => $this->currentPost]);
+    }
 }

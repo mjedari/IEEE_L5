@@ -109,7 +109,7 @@
 <!-- =================== News & Articles ==================== -->
 <div class="container-fluid">
     <!-- strat news column -->
-    <div class="col-md-6 news-column">
+    <div class="col-md-8 news-column">
         <div class="container-fluid">
             <div class="col-md-12">
                 <div class="news-top-nav text-center">
@@ -117,24 +117,6 @@
                 </div>
                 <!-- strat news -->
                 <div class="row news-row news-ajax">
-                    {{--@foreach($news as $item)--}}
-                        {{--<div class="col-xs-6 col-sm-4 col-md-4 news-thumb">--}}
-                            {{--<div class="thumbnail">--}}
-                                {{--<img  class="news-images" src="--}}
-                                {{--@if(!isset($item['images'][0]))--}}
-                                    {{--/images/no_image_available.jpg--}}
-                                {{--@else--}}
-                                    {{--{{ $item['images'][0] }}--}}
-                                {{--@endif--}}
-                                {{--" alt="...">--}}
-                                {{--<div class="caption">--}}
-                                    {{--<h5>{{ $item['title'] }}</h5>--}}
-                                    {{--<p class="news-summary">{!! $item['summary'] !!}</p>--}}
-                                {{--</div>--}}
-                                {{--<a href="{{ '/news/'.$item['slug'] }}" class="btn btn-primary news-button btn-block btn-sm" role="button">Read more</a>--}}
-                            {{--</div>--}}
-                        {{--</div>--}}
-                    {{--@endforeach--}}
                     @include('news-ajax')
                 </div>
                 <div class="paginate">
@@ -148,33 +130,76 @@
             </div>
         </div>
     </div>
-    <!-- start article column -->
-    <div class="col-md-6 articles-column">
+    <!-- start article & workshops column -->
+    <div class="col-md-4">
+        <div class="container-fluid articles-tab">
+            <div class="articles-top-nav text-center">
+                <a href="{{route('articles')}}">ARTICLES</a>
+            </div>
+            <!-- strat panel -->
+            {{--<div class="panel panel-default article-panel">--}}
+                {{--<div class="panel-heading"></div>--}}
+                {{--<div class="panel-body">--}}
+                    {{--<!-- start article -->--}}
+                    {{--@foreach($articles as $item)--}}
+                        {{--<div class="media article">--}}
+                            {{--<div class="media-left">--}}
+                                {{--<a href="#">--}}
+                                    {{--<img class="media-object" src="/images/articles.jpg" alt="..." style="width: 60px;">--}}
+                                {{--</a>--}}
+                            {{--</div>--}}
+                            {{--<div class="media-body article-body">--}}
+                                {{--<h5 class="media-heading">{{$item['title']}}</h5>--}}
+                                {{--{!! $item['body'] !!}--}}
+                            {{--</div>--}}
+                        {{--</div>--}}
+                    {{--@endforeach--}}
+                {{--</div>--}}
+            {{--</div>--}}
+            @include('articles')
+        </div>
         <div class="container-fluid">
-            <div class="col-md-12">
-                <div class="articles-top-nav text-center">
-                    <a href="{{route('articles')}}">ARTICLES</a>
+            <div class="workshops-top-nav text-center">
+            <a href="{{route('workshops')}}">WORKSHOPS</a>
+        </div>
+            <div class="panel panel-default workshops-panel">
+                <!-- Default panel contents -->
+                <div class="panel-body">
+                    Here you see some information about last workshops:
                 </div>
-                <!-- strat panel -->
-                <div class="panel panel-default article-panel">
-                    <div class="panel-heading"></div>
-                    <div class="panel-body">
-                        <!-- start article -->
-                        @foreach($articles as $item)
-                            <div class="media article">
-                                <div class="media-left">
-                                    <a href="#">
-                                        <img class="media-object" src="/images/articles.jpg" alt="..." style="width: 60px;">
-                                    </a>
-                                </div>
-                                <div class="media-body article-body">
-                                    <h5 class="media-heading">{{$item['title']}}</h5>
-                                    {!! $item['body'] !!}
-                                </div>
-                            </div>
-                        @endforeach
-                    </div>
-                </div>
+                <!-- Table -->
+                <table class="table table-hover table-condensed table-responsive">
+                    <tr class="table-first-row">
+                        <td>Name</td>
+                        <td><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span> Start Date</td>
+                        <td>Class No</td>
+                        <td><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Time</td>
+                    </tr>
+                    <tr>
+                        <td>electronic</td>
+                        <td>95/2/12</td>
+                        <td>527</td>
+                        <td>13:00, 17:00</td>
+                    </tr>
+                    <tr>
+                        <td>machine vision</td>
+                        <td>95/2/12</td>
+                        <td>527</td>
+                        <td>13:00, 17:00</td>
+                    </tr>
+                    <tr>
+                        <td>Avr</td>
+                        <td>95/2/12</td>
+                        <td>527</td>
+                        <td>13:00, 17:00</td>
+                    </tr>
+                    <tr>
+                        <td>Android</td>
+                        <td>95/2/12</td>
+                        <td>527</td>
+                        <td>13:00, 17:00</td>
+                    </tr>
+                </table>
             </div>
         </div>
     </div>
@@ -195,15 +220,6 @@
             </div>
             <!-- subscribe form -->
             <div class="container subscribe-form">
-                {{--<form action="" class="text-center form-horizontal">--}}
-                    {{--<div class="form-group form-subscribe form-group-lg subscribe-form-body">--}}
-                        {{--<div class="col-md-7 form-inline subscribe-form-column">--}}
-                            {{--<label for="email-subscribe" >Stay up to date!</label>--}}
-                            {{--<input type="email" name="email" id="email-subscribe" class="form-control lg" placeholder="input your email here">--}}
-                            {{--<button type="submit" class="btn btn-primary btn-lg" >subscribe</button>--}}
-                        {{--</div>--}}
-                    {{--</div>--}}
-                {{--</form>--}}
                 {!! Form::open(array('url'=>'/subscribe', 'method' => 'post','class' => 'text-center form-horizontal')) !!}
                 <div class="form-group form-subscribe form-group-lg subscribe-form-body">
                     <div class="col-md-7 form-inline subscribe-form-column">
@@ -216,8 +232,8 @@
                     </div>
                 </div>
                 {!! Form::close() !!}
-            </div>
 
+            </div>
         </div>
     </div>
 </section>
@@ -225,4 +241,5 @@
 
 @section('script')
     <script type="text/javascript" src="js/ieee.js"></script>
+    <script type="text/javascript" src="js/jquery.equalize.js"></script>
 @endsection

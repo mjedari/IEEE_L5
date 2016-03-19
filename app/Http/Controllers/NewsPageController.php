@@ -54,13 +54,6 @@ class NewsPageController extends Controller
         return view('pages.index',compact('pages', 'posts', 'didYouKnow'),['currentPost' => $this->currentPost]);
     }
 
-    public function indexNews(){
-        $catNews = $this->categories->where('title', 'News')->get()->toArray()[0]['id'];
-        $news = json_encode($this->posts->where(['category_id'=> $catNews, 'slider'=>'false'])
-            ->orderBy('created_at','desc')->take(12)->Paginate(3));
-        //dd(var_dump($news));
-        return view('layouts/newsIndex', compact('news'));
-    }
 
 }
 

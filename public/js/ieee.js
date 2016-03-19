@@ -32,6 +32,10 @@ $(document).ready(function(){
         $(".disabled-link").click(function(event) {
             event.preventDefault();
         });
+        ////custom scroll bar
+        $(function () {
+            $('.scrollable_div').scrollator();
+        });
 
         $(".pager > li > a").click(function($e) {
             $e.preventDefault();
@@ -44,12 +48,12 @@ $(document).ready(function(){
                 data: {'page': page},
                 success: function (data) {
                     $('.news-row').html(data.html);
-
+                    ////Reload custom scroll bar
+                    $(function () {
+                        $('.scrollable_div').scrollator();
+                    });
                 }
             });
         });
-
-
-
 
 });

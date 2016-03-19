@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Intervention\Image\Facades\Image;
 
 class Post extends Model
 {
@@ -30,6 +31,23 @@ class Post extends Model
 
     public function setImagesAttribute($value)
     {
+//        if ($value == $this->attributes['image']) return;
+
+        // crop image
+        // open an image file
+//        $img = Image::make($value[0]);
+
+        // resize image instance
+//        $img->resize(170, 170);
+
+//        $pUrl = $img->dirname.'/'.$img->basename;
+//        $processedValue = [];
+//        array_push($processedValue, $pUrl);
+
+        // save image in desired format
+//        $img->save($processedValue[0]);
+
+        // And store it to the attributes
         $this->attributes['images'] = json_encode($value);
     }
 

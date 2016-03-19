@@ -39,6 +39,7 @@ a.disabled-link:hover {
 /* Navbar Style */
 nav.navbar {
 	margin: 0;
+	border-radius: 0;
 }
 
 li.menu-discription {
@@ -172,18 +173,7 @@ li.menu-discription {
 	font-size: 12px;
 }
 
-/*News & Articles*/
-.thumbnail {
-	padding: 0;
-}
-.thumbnail > .caption > h5 {
-	font-weight: bold;
-}
-.thumbnail > .caption > p {
-	font-size: 13px;
-	height: 120px;
-}
-
+/*News & Articles & Workshops*/
 .left-bar {
 	background: #EEEEEE;
 	width:20px;
@@ -199,10 +189,37 @@ li.menu-discription {
 	float: right;
 	margin-right: -5px;
 }
-.thumbnail > .news-images {
-	width: 170px;
-	height: 170px;
+
+.thumbnail {
+	/*min-height: 100%;*/
+	padding: 0;
+	/*position: relative;*/
+	margin-bottom: 0;
+	overflow:  hidden;
+	min-height: 440px;
+	max-height: 440px;
 }
+.thumbnail > .news-images {
+
+}
+.thumbnail > .news-caption {
+
+
+}
+.thumbnail > .caption > h5 {
+	font-weight: bold;
+}
+.thumbnail > .caption > p {
+	font-size: 13px;
+	/*max-height: 300px;*/
+}
+
+.thumbnail > .news-images {
+	/*max-width: 100%;*/
+	/*margin-right: -4px ;*/
+
+}
+
 .bar-title {
 	border: 1px solid #EEEEEE;
 	margin: 0;
@@ -214,52 +231,97 @@ li.menu-discription {
 }
 .news-thumb {
 	padding: 4px;
+	height: 400px;
+	margin-bottom: 30px;
+
 }
 
 .news-column,
 .articles-column {
-	
+	padding: 0;
 }
 .news-summary {
-	overflow: hidden;
+	/*overflow: auto;*/
 }
 
 .news-top-nav,
-.articles-top-nav {
+.articles-top-nav,
+.workshops-top-nav {
 	border: 1px solid #EEEEEE;
 	border-left: 20px solid #F5F5F5;
 	border-right: 20px solid #F5F5F5;
 	padding: 5px;
 }
 .news-top-nav:hover,
-.articles-top-nav:hover {
+.articles-top-nav:hover,
+.workshops-top-nav {
 	background: #F5F5F5;
 }
 .news-top-nav > a ,
-.articles-top-nav > a {
+.articles-top-nav > a,
+.workshops-top-nav > a{
 	text-decoration: none;
 	color: gray;
 	font-weight: bold;
+}
+.articles-top-nav {
+	margin-bottom: 5px;
 }
 
 .news-row {
 	padding: 0 10px 0 10px;
 }
-.article-panel {
-	margin-top: 10px;
+.pager {
+	margin-top: 60px;
+	position: relative;
 }
-
-.article {
-	border: 1px solid #F4F5F6;
+.articles-tab {
+	margin-bottom: 10px;
+}
+.nav-tabs > li > a{
 	padding: 5px;
 }
-.article:hover {
-	background: #F4F5F6;
+.tab-content {
+	border: 1px solid #DDDDDD;
+	border-top: 0;
 }
-.article-body > h5 {
+.article-item {
+	min-height: 60px;
+}
+.article-image {
+	float: left;
+	margin-right: 10px;
+	border-radius: 5px;
+}
+.article-item > a {
+	font-weight: bold;
+	font-size: 12px;
+	color: black;
+	text-decoration: none;
+}
+.article-detail {
+	font-size: 10px;
+	color: darkgray;
+}
+.tab-pane > hr {
+	margin: 6px 0 5px 0;
+}
+.tab-content {
+	padding: 10px;
+}
+
+.workshops-top-nav {
+
+}
+.workshops-panel > .panel-body {
+	font-style: italic;
+	font-size: 12px;
+}
+.table-first-row {
 	font-weight: bold;
 }
-.article-body > p {
+
+.workshops-panel > .table {
 	font-size: 12px;
 }
 

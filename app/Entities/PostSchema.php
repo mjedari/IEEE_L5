@@ -38,11 +38,11 @@ class PostSchema extends Entity {
         $schema->relates('user')->required()->help('فیلدهای ستاره دار الزامی میباشند.')
             ->disable(self::WHEN_EXISTS);
         $schema->string('title')->required();
-        $schema->slug('slug','title')->separator('_')->help('جهت ساخت نشانی معتبر بدون وارد کردن متن در این فیلد، روی آیکون لینک کلیک نمایید');
+        $schema->slug('slug','title')->separator('_')->help('slug title');
         $schema->relates('category')->required();
         $schema->text('summary');
         $schema->ckedit('body')->label('Main Content')->required();
-        $schema->boolean('slider')->label("Slider Show")->help('نشان دادن در اسلایدر');
+        $schema->boolean('slider')->label("Slider Show")->help('slider showing');
         $field = $schema->image('images');
         $field->many();
         $field = $schema->file('files');
@@ -117,7 +117,7 @@ class PostSchema extends Entity {
         //This is Cruddy main method:
         //$schema->col('images')->format('Image' , ['width'=>'100', 'height'=>'50']);
         $schema->compute('images', function($model){
-            //We use this method until cruddy fixed this bug.
+            //We use this method until cruddy fixed it's bug.
             if(!empty($model->images)){
                 $image = $model->images[0];
                 return $image;

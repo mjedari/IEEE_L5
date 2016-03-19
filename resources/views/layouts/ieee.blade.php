@@ -13,7 +13,8 @@
     {{--<link href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700" rel='stylesheet' type='text/css'>--}}
 
     <!-- Styles -->
-    {!! Html::style('/css/bootstrap.min.css') !!}
+    {!! Html::style('/css/bootstrap.css') !!}
+    {!! Html::style('/css/fm.scrollator.jquery.css') !!}
     @yield('header')
     {{--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">--}}
 </head>
@@ -30,7 +31,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="http://localhost:8000">IACT IEEE</a>
+                <a class="navbar-brand" href="http://localhost:8000">IACT IEEE <sub class="litle-font">Beta</sub> </a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
@@ -150,9 +151,15 @@
                     </div>
                     <div class="col-md-3">
                         <div class="footer-title">
-                            <h4>Recent Posts</h4>
+                            <h4>Members Since Now</h4>
                         </div>
-                        <div class="footer-content"></div>
+                        <div class="footer-content">
+
+                            <h1 style="font-size: 60px"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> 426</h1>
+                            <a class="btn btn-success" href="#" role="button">Join Us Now!</a>
+                            <a class="btn btn-info" href="#" role="button">More</a>
+                            <div id="date-part" style="width: 100px;"></div>
+                        </div>
                     </div>
                     <div class="col-md-3">
                         <div class="footer-title">
@@ -189,6 +196,8 @@
 
     {!! Html::script('js/jquery-1.12.0.min.js') !!}
     {!! Html::script('js/bootstrap.js') !!}
+    {!! Html::script('js/fm.scrollator.jquery.js') !!}
+
     @yield('script')
     <!-- ====================== END SCRIPTS ==================== -->
 </body>

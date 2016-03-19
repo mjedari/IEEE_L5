@@ -26,18 +26,15 @@ class indexController extends Controller
         $catArticles = $this->categories->where('title', 'articles')->get()->toArray()[0]['id'];
         //$catClasses = $this->categories->where('title', 'classes')->get()->toArray()[0]['id'];
         $news = json_encode($this->posts->where(['category_id'=> $catNews, 'slider'=>'false'])
-                ->orderBy('created_at','desc')->take(12)->paginate(3));
+                ->orderBy('created_at','desc')->take(12)->paginate(4));
         $workshops = $this->posts->where('category_id', $catWorkshops)->orderBy('created_at','desc')->take(4)->get()->toArray();
         $articles = $this->posts->where('category_id', $catArticles)->orderBy('created_at','desc')->take(3)->get()->toArray();
 //        dd(var_dump($slider));
 //        $workshops = $this->posts->where('id', 2);
 //        $classes = $this->posts->where('id', 3);
 //        $articles = $this->posts->where('id', 4);
-        //dd(var_dump($articles));
-        //dd($news);
+
         if ($request->ajax()) {
-            //return $news;
-            //return json_encode(Response::view('test'));
             $returnHTML = view('news-ajax', compact('news'))->render();
             return response()->json(array('success' => true, 'html'=>$returnHTML));
         }

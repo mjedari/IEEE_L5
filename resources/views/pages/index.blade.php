@@ -13,7 +13,7 @@
     <div class="jumbotron jumbotron-main" style="background: url('{!! route('index')."/".$pages[0]["images"] !!}') no-repeat;">
         <div class="container">
             <div class="col-md-8">
-                <h1>{{ $pages[0]['title'] }}</h1>
+                <h1>{{ strtoupper($pages[0]['title']) }}</h1>
                 <p>{{ $pages[0]['summary'] }}</p>
             </div>
         </div>

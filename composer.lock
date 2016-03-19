@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "811d0f55220b382cb0ad562207b5aed9",
-    "content-hash": "aeca573e501da6bbe8790e3837360c55",
+    "hash": "57b261197f67dc418f2441b8c4254813",
+    "content-hash": "8f1569a44d3a6d9fec8e3f45f3526939",
     "packages": [
         {
             "name": "barryvdh/elfinder-flysystem-driver",
@@ -637,16 +637,16 @@
         },
         {
             "name": "intervention/image",
-            "version": "2.3.5",
+            "version": "2.3.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Intervention/image.git",
-                "reference": "9f29360b8ab94585cb9e80cf9045abd5b85feb89"
+                "reference": "e368d262887dbb2fdfaf710880571ede51e9c0e6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Intervention/image/zipball/9f29360b8ab94585cb9e80cf9045abd5b85feb89",
-                "reference": "9f29360b8ab94585cb9e80cf9045abd5b85feb89",
+                "url": "https://api.github.com/repos/Intervention/image/zipball/e368d262887dbb2fdfaf710880571ede51e9c0e6",
+                "reference": "e368d262887dbb2fdfaf710880571ede51e9c0e6",
                 "shasum": ""
             },
             "require": {
@@ -695,7 +695,7 @@
                 "thumbnail",
                 "watermark"
             ],
-            "time": "2016-01-02 19:15:13"
+            "time": "2016-02-26 18:18:19"
         },
         {
             "name": "jakub-onderka/php-console-color",
@@ -852,7 +852,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cruddy/cruddy/zipball/76a08894bb949577dedb6db3affe569fe59398d2",
+                "url": "https://api.github.com/repos/cruddy/cruddy/zipball/9533d370a8d447ea344005ace8f30839a519beef",
                 "reference": "76a08894bb949577dedb6db3affe569fe59398d2",
                 "shasum": ""
             },

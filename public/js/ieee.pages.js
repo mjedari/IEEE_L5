@@ -29,4 +29,9 @@ $(document).ready(function(){
     $(".disabled-link").click(function(event) {
         event.preventDefault();
     });
+
+    //custom scroll bar
+    $(function () {
+        $('.scrollable_div').scrollator();
+    });
 });
