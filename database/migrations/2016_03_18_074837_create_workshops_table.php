@@ -16,8 +16,8 @@ class CreateWorkshopsTable extends Migration
             $table->increments('id');
             $table->string('title');
             $table->string('body');
-            $table->string('start_date');
-            $table->string('end_date');
+            $table->string('start');
+            $table->string('end');
             $table->string('class');
             $table->string('time');
             $table->string('images');

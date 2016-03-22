@@ -52,9 +52,9 @@
                             ],
                 'icon' => 'comment'
             ],
-        'Messages' =>
+        'Contacts' =>
             [
-                'entity' => 'messages',
+                'entity' => 'contacts',
                 'icon' => 'envelope'
             ],
         'Tags' =>
@@ -93,7 +93,7 @@
         'pageComments' => 'App\Entities\PageCommentsSchema',
         'pages' => 'App\Entities\PageSchema',
         'tags' => 'App\Entities\TagSchema',
-        'messages' => 'App\Entities\MessageSchema',
+        'contacts' => 'App\Entities\ContactSchema',
         'didyouknow' => 'App\Entities\DidYouKnowSchema',
     ],
 );

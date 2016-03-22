@@ -108,6 +108,8 @@ Route::group(['middleware' => ['web']], function () {
 //    Route::controller('/about', 'AboutPageController');
 //    Contact Menu
     Route::get('/contact', 'ContactPageController@index')->name('contact');
+    Route::post('/contact/store', 'ContactPageController@store');
+
 
 
 });

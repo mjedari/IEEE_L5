@@ -4,12 +4,12 @@ namespace App\Entities;
 
 use Kalnoy\Cruddy\Entity;
 
-class MessageSchema extends Entity {
+class ContactSchema extends Entity {
 
     /**
      * @var string
      */
-    protected $model = 'App\Models\Message';
+    protected $model = 'App\Models\Contact';
 
     /**
      * The name of the column that is used to convert a model to a string.
