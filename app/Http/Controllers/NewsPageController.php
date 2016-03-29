@@ -30,12 +30,15 @@ class NewsPageController extends Controller
         if(empty($pages)){
             return redirect('errors/404');
         }
-        $posts = $this->postRepository->getPostsTitleWithSameCategory($category);
+        $posts = $this->postRepository->getPostsWithSameCategory($category)->paginate(20);
+
+        // 3 is links number in each column
+        $lastPosts = array_chunk($this->postRepository->getPostsTitleWithSameCategory($category), 3);
         if(!empty($slug)){
             $this->currentPost = $this->postRepository->getPostWithSameCategory($pageName, $slug);
         }
         $didYouKnow = $this->pageRepository->getDidYouKnow();
-        return view('pages.index',compact('pages', 'posts', 'didYouKnow'),['currentPost' => $this->currentPost]);
+        return view('pages.news',compact('pages', 'posts','lastPosts', 'didYouKnow'),['currentPost' => $this->currentPost]);
     }
 
     public function newsItem($slug)
@@ -46,12 +49,13 @@ class NewsPageController extends Controller
         if(empty($pages)){
             return redirect('errors/404');
         }
-        $posts = $this->postRepository->getPostsTitleWithSameCategory($category);
+        $posts = '';
+        $lastPosts = array_chunk($this->postRepository->getPostsTitleWithSameCategory($category), 3);
         if(!empty($slug)){
             $this->currentPost = $this->postRepository->getPostWithSameCategory($pageName, $slug);
         }
         $didYouKnow = $this->pageRepository->getDidYouKnow();
-        return view('pages.index',compact('pages', 'posts', 'didYouKnow'),['currentPost' => $this->currentPost]);
+        return view('pages.news',compact('pages','posts','lastPosts', 'didYouKnow'),['currentPost' => $this->currentPost]);
     }
 
 

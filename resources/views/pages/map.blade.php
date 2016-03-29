@@ -1,6 +1,6 @@
 <script src='https://maps.googleapis.com/maps/api/js?v=3.exp'></script>
-<div style='overflow:hidden;height:300px;width:300px;'>
-    <div id='gmap_canvas' style='height:410px;width:300px;'></div>
+<div style='overflow:hidden;height:300px;width:350px;'>
+    <div id='gmap_canvas' style='height:300px;width:350px;'></div>
     <div><small><a href="http://embedgooglemaps.com">embed google maps</a></small></div>
     <div><small><a href="http://www.autohuren.world/">autohuren</a></small></div>
     <style>#gmap_canvas img{max-width:none!important;background:none!important}</style></div>

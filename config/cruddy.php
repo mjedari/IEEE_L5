@@ -57,6 +57,11 @@
                 'entity' => 'contacts',
                 'icon' => 'envelope'
             ],
+        'Subscribers' =>
+            [
+                'entity' => 'subscribers',
+                'icon' => 'heart'
+            ],
         'Tags' =>
             [
                 'entity' => 'tags',
@@ -93,6 +98,7 @@
         'pageComments' => 'App\Entities\PageCommentsSchema',
         'pages' => 'App\Entities\PageSchema',
         'tags' => 'App\Entities\TagSchema',
+        'subscribers' => 'App\Entities\SubscriptionSchema',
         'contacts' => 'App\Entities\ContactSchema',
         'didyouknow' => 'App\Entities\DidYouKnowSchema',
     ],

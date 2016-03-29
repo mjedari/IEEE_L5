@@ -21,7 +21,7 @@ class CreatePostsTable extends Migration
             $table->string('title');
             $table->text('summary');
             $table->text('body');
-            $table->string('images')->nullable();
+            $table->text('images')->nullable();
             $table->string('files')->nullable();
             $table->boolean('slider')->default(false);
             $table->boolean('seen')->default(false);

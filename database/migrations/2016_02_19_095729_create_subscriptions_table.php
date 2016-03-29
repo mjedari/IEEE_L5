@@ -17,7 +17,7 @@ class CreateSubscriptionsTable extends Migration
             $table->string('first_name');
             $table->string('last_name');
             $table->string('email')->unique();
-            $table->string('phone')->unique();
+            $table->string('phone')->unique()->nullable();
             $table->boolean('lang');
             $table->timestamps();
         });

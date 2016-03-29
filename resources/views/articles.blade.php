@@ -1,40 +1,26 @@
 <ul class="nav nav-tabs nav-justified">
     <li class="active"><a data-toggle="tab" href="#recent">Recent</a></li>
-    <li><a data-toggle="tab" href="#best">Best</a></li>
+    {{--<li><a data-toggle="tab" href="#best">Best</a></li>--}}
     {{--<li><a data-toggle="tab" href="#menu2">Menu 2</a></li>--}}
 </ul>
 
 <div class="tab-content">
     <div id="recent" class="tab-pane fade in active">
+        @foreach($articles as $item)
         <div class="article-item">
-            <img src="upload/images/0izPmy.png" class="article-image " alt="">
+            @if(!empty($item['images']))
+            <img src="{{ $item['images'][0] }}" class="article-image" alt="">
+            @endif
             <a href="">
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                <h5>{{ $item['title'] }}</h5>
+                <p>{{ $item['summary'] }}</p>
             </a>
             <div class="article-detail">
-                Published in 16 Aug | Owner: Mahdi Jedari
+                Published in {{ $item['created_at'] }} | Owner: Mahdi Jedari
             </div>
         </div>
         <hr>
-        <div class="article-item">
-            <img src="upload/images/0izPmy.png" class="article-image " alt="">
-            <a href="">
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-            </a>
-            <div class="article-detail">
-                Published in 16 Aug | Owner: Mahdi Jedari
-            </div>
-        </div>
-        <hr>
-        <div class="article-item">
-            <img src="upload/images/0izPmy.png" class="article-image " alt="">
-            <a href="">
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-            </a>
-            <div class="article-detail">
-                Published in 16 Aug | Owner: Mahdi Jedari
-            </div>
-        </div>
+        @endforeach
     </div>
     <div id="best" class="tab-pane fade">
         <h3>Best</h3>

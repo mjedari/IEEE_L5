@@ -36,6 +36,7 @@ class DidYouKnowSchema extends Entity {
         $schema->string('title');
         $schema->ckedit('body');
         $schema->timestamps();
+//        $schema->text('body');
     }
 
     /**
@@ -47,7 +48,7 @@ class DidYouKnowSchema extends Entity {
     {
         $schema->col('id');
         $schema->col('title');
-        $schema->col('body');
+//        $schema->col('body');
         $schema->col('updated_at')->reversed();
     }
 

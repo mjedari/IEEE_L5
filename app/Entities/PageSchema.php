@@ -23,7 +23,7 @@ class PageSchema extends Entity {
      *
      * @var string
      */
-    protected $defaultOrder = null;
+    protected $defaultOrder = 'created_at';
 
     /**
      * Define some fields.
@@ -33,11 +33,8 @@ class PageSchema extends Entity {
     public function fields($schema)
     {
         $schema->increments('id');
-        $schema->relates('user')->required()->help('فیلدهای ستاره دار الزامی میباشند.');
+        $schema->relates('user')->required();
         $schema->string('title')->label('Page Name')->required();
-        $schema->enum('group', ['news'=>'news','articles'=>'articles',
-            'workshop'=>'workshop'
-        ])->label('Page group');
         $schema->slug('slug','title')->separator('_');
         $schema->text('summary')->label('Page Description');
         $schema->ckedit('body')->label('Page Content')->required();
@@ -65,7 +62,6 @@ class PageSchema extends Entity {
         $l->tab('page', function($t) {
             $t->row(['user']);
             $t->row(['title']);
-            $t->row(['group']);
             $t->row(['slug','url']);
             $t->row(['summary']);
             $t->row(['body']);
@@ -91,7 +87,7 @@ class PageSchema extends Entity {
         $schema->compute('uploaded files', function($model){
             return count($model->files);
         });
-        $schema->col('updated_at')->reversed();
+        $schema->col('created_at')->reversed();
     }
 
     public function files($repo)

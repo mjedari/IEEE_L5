@@ -36,8 +36,6 @@
                     {!! $pages[0]['body'] !!}
                 @endif
 
-                {!! var_dump($posts) !!}
-                {!! var_dump($currentPost) !!}
 
             </div>
                 <!-- contact form -->
@@ -65,27 +63,47 @@
                             {!! Form::label('contact-message', 'Message: *') !!}
                             {!! Form::textarea($name = 'message', $value = null, $attributes = array('class'=>'form-control message-input', 'placeholder'=>'', 'id'=>'contact-message')) !!}
                         </div>
-                        {!! Form::submit('Send',array('class' => 'btn btn-primary send-button')) !!}
+                        <div class="form-group col-md-6 col-sm-6 col-xs-6">
+                            {!! Form::label('contact-captcha', 'Enter code: *') !!}
+                            {!! Form::text($name = 'captcha', $value = null, $attributes = array('class'=>'form-control captcha-input', 'placeholder'=>'captcha', 'id'=>'contact-captcha')) !!}
+                            <p class="little-font">Enter lower case in letters.</p>
+                        </div>
+                        <div class="captcha-submit">
+                            <img src="captcha.php" class="captcha-image" alt="">
+                            {!! Form::hidden($name = 'cookie', $value = null, $attributes = array('class' => 'cookie')) !!}
+                            {!! Form::submit('Send',array('class' => 'btn btn-primary send-button')) !!}
+
+                        </div>
+
                         {!! Form::close() !!}
+
+                        <div class="captcha">
+                            @if($errors->any())
+                                <h4>{{$errors->first()}}<span class="glyphicon glyphicon-ok" aria-hidden="true"></span></h4>
+                            @endif
+                        </div>
                     </div>
                 </div>
+                <!-- start map -->
                 <div class="col-md-6">
-                    <div class="container-fluid" style="background: forestgreen;margin: 10px;padding: 10px;">
-                        <p style="color: white;font-size: 20px; font-weight: bold;font-style: italic"><span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span> We are here:</p>
-                        @include('pages.map')
-                    </div>
-
-                    <div class="container-fluid" style="background: blueviolet;padding: 10px;margin:10px">
-                        <div class="col-md-6">
-                            <p style="color: white; font-size: 35px; font-weight: bold;font-style: italic"><span class="glyphicon glyphicon-phone" aria-hidden="true"></span> On your phone:</p>
+                    <div class="container-fluid map-box">
+                        <p><span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span> We are here:</p>
+                        <div class="map">
+                            @include('pages.map')
                         </div>
-                        <div class="col-md-6">
-                            <img src="images/ieee-qr.png" alt="" style="width: 160px;">
+                    </div>
+                    <div class="qr-box">
+                        <div class="p-box">
+                            <p><span class="glyphicon glyphicon-phone" aria-hidden="true"></span> On your phone:</p>
+                        </div>
+                        <div class="qr-img">
+                            <img src="images/ieee-qr.png" alt="">
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+
         <!-- sidebar -->
         <div class="col-md-3">
             <div class="panel panel-info">
@@ -125,5 +143,6 @@
 
 @section('script')
     {!! Html::script('js/ieee.pages.js') !!}
+    {!! Html::script('js/jquery.colorbox.js') !!}
     {!! Html::script('js/contact.page.js') !!}
 @endsection

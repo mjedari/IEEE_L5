@@ -21,7 +21,7 @@
 <body>
 <!-- ================Navbar And Slider================= -->
 <section>
-    <nav class="navbar navbar-default">
+    <nav class="navbar navbar-default @yield('navbar-type')">
         <div class="container-fluid">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
@@ -31,7 +31,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="http://localhost:8000">IACT IEEE <sub class="litle-font">Beta</sub> </a>
+                <a class="navbar-brand" href="http://localhost:8000">IAUCTB IEEE <sub class="litle-font">Beta</sub> </a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
@@ -41,6 +41,7 @@
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Education <span class="caret"></span></a>
                         <ul class="dropdown-menu">
+                            <li><a href="{{route('courses')}}">Courses</a></li>
                             <li><a href="{{route('workshops')}}">Workshops</a></li>
                             <li><a href="{{route('tutorials')}}">Guides & Tutorials</a></li>
                             <li role="separator" class="divider"></li>
@@ -50,46 +51,48 @@
                     <li class="dropdown">
                         <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Events <span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <li><a href="{{route('conferences')}}">Conferences</a></li>
+                            <li><a href="{{route('ieeeDays')}}">IEEE Days</a></li>
+                            <li><a href="{{route('elections')}}">Elections</a></li>
+                            <li><a href="{{route('occasions')}}">Special Occasions</a></li>
                             <li><a href="{{route('competitions')}}">Competitions</a></li>
-                            <li><a href="{{route('camps')}}">Camps</a></li>
-                            <li><a href="{{route('sessions')}}">Sessions</a></li>
                             <li><a href="{{route('calendar')}}">Calendar</a></li>
                             <li role="separator" class="divider"></li>
                             <li class="menu-discription litle-font">Discription</li>
                         </ul>
                     </li>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Publications <span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="{{route('articles')}}">Articles</a></li>
-                            <li><a href="{{route('newsletter')}}">Newsletter</a></li>
-                            <li><a href="{{route('subscription')}}">Subscription</a></li>
-                            <li role="separator" class="divider"></li>
-                            <li>
-                                <div class="menu-caption">
-                                    <img src="{{url('/images/subscribe_f).jpg')}}" alt="">
-                                    <p>IEEE Xplore® digital library subscriptions deliver the journals, conference proceedings, standards, eBooks, and tutorials that define technology today.</p>
-                                </div>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Chapters <span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="{{route('chapterOne')}}">Chapter 1</a></li>
-                            <li><a href="{{route('chapterTwo')}}">Chapter 2</a></li>
-                            <li><a href="{{route('chapterThree')}}">Chapter 3</a></li>
-                            <li role="separator" class="divider"></li>
-                            <li class="menu-discription litle-font">Discription</li>
-                        </ul>
-                    </li>
+                    <!--Publications menu-->
+                    {{--<li class="dropdown">--}}
+                        {{--<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Publications <span class="caret"></span></a>--}}
+                        {{--<ul class="dropdown-menu">--}}
+                            {{--<li><a href="{{route('articles')}}">Articles</a></li>--}}
+                            {{--<li><a href="{{route('newsletter')}}">Newsletter</a></li>--}}
+                            {{--<li><a href="{{route('subscription')}}">Subscription</a></li>--}}
+                            {{--<li role="separator" class="divider"></li>--}}
+                            {{--<li>--}}
+                                {{--<div class="menu-caption">--}}
+                                    {{--<img src="{{url('/images/subscribe_f).jpg')}}" alt="">--}}
+                                    {{--<p>IEEE Xplore® digital library subscriptions deliver the journals, conference proceedings, standards, eBooks, and tutorials that define technology today.</p>--}}
+                                {{--</div>--}}
+                            {{--</li>--}}
+                        {{--</ul>--}}
+                    {{--</li>--}}
+                    <!--chapters menu-->
+                    {{--<li class="dropdown">--}}
+                        {{--<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Chapters <span class="caret"></span></a>--}}
+                        {{--<ul class="dropdown-menu">--}}
+                            {{--<li><a href="{{route('chapterOne')}}">Chapter 1</a></li>--}}
+                            {{--<li><a href="{{route('chapterTwo')}}">Chapter 2</a></li>--}}
+                            {{--<li><a href="{{route('chapterThree')}}">Chapter 3</a></li>--}}
+                            {{--<li role="separator" class="divider"></li>--}}
+                            {{--<li class="menu-discription litle-font">Discription</li>--}}
+                        {{--</ul>--}}
+                    {{--</li>--}}
 
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Media <span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <li><a href="{{route('images')}}">Album</a></li>
-                            <li><a href="{{route('videos')}}">Videos</a></li>
+                            <li><a href="{{route('album')}}">Album</a></li>
+                            <li><a href="{{route('videos')}}" class="disabled-link">Videos</a></li>
                             <li role="separator" class="divider"></li>
                             <li class="menu-discription litle-font">Discription</li>
                         </ul>
@@ -101,14 +104,17 @@
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">About <span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <li><a href="chapterone">About IEEE</a></li>
-                            <li><a href="#">History of IEEE</a></li>
+                            <li><a href="{{ route('about').'/'.str_slug('Our Mission & Vision','_') }}">Our Mission & Vision</a></li>
+                            <li><a href="{{ route('about').'/'.str_slug('History of IEEE & Region 8','_') }}">History of IEEE & Region 8</a></li>
+                            <li><a href="{{ route('about').'/'.str_slug('History of Iran Section','_') }}">History of Iran Section</a></li>
                             <li role="separator" class="divider"></li>
                             <img class="about-img" src="{{url('/images/about_f.jpg')}}" alt="">
-                            <li><a href="#">About IAUCTB</a></li>
-                            <li><a href="#">About IACT Student Branch</a></li>
-                            <li><a href="">Elections</a></li>
-                            <li><a href="/Documents" class="disabled-link">Governing Documents</a></li>
+                            <li><a href="{{ route('about').'/'.str_slug('Introduction to IAUCTB','_') }}">Introduction to IAUCTB</a></li>
+                            <li><a href="{{ route('about').'/'.str_slug('IAUCTB Student Branch','_') }}">IAUCTB Student Branch</a></li>
+                            <li><a href="{{ route('board') }}">Our Board</a></li>
+                            <li><a href="{{ route('about').'/'.str_slug('WebSite Team','_') }}" class="disabled-link">WebSite Team</a></li>
+                            <li><a href="{{ route('about').'/'.str_slug('Vital Documents','_') }}">Vital Documents</a></li>
+                            <li><a href="{{ route('about').'/'.str_slug('Awards & Honors','_') }}">Awards & Honors</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -128,13 +134,13 @@
                             <h4>Contact</h4>
                         </div>
                         <div class="footer-content">
-                            <p>Nullam justo nunc, dignissim at convallis posuere, sodales eu orci.</p>
+                            <p>Neyayesh University Complex.<br>Faculty of Engineering and technology</p>
                             <hr>
-                            <i class="glyphicon glyphicon-home"></i>   123, Some Area. Los Angeles, CA, 54321.</i>
+                            <i class="glyphicon glyphicon-home"></i> Oreg St. Hamila Blvd, Poonk Sq</i>
                             <hr>
-                            <i class="glyphicon glyphicon-earphone"> +98-0214444444</i>
+                            <i class="glyphicon glyphicon-earphone"> +98-02144600070</i>
                             <hr>
-                            <i class="glyphicon glyphicon-envelope"></i><span>  someone@example.com</span>
+                            <i class="glyphicon glyphicon-envelope"></i><span>  info@ieee-iauctb.ir</span>
                         </div>
                     </div>
                     <div class="col-md-3 test">
@@ -151,13 +157,12 @@
                     </div>
                     <div class="col-md-3">
                         <div class="footer-title">
-                            <h4>Members Since Now</h4>
+                            <h4>Members Last Year</h4>
                         </div>
-                        <div class="footer-content">
-
-                            <h1 style="font-size: 60px"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> 426</h1>
-                            <a class="btn btn-success" href="#" role="button">Join Us Now!</a>
-                            <a class="btn btn-info" href="#" role="button">More</a>
+                        <div class="footer-content members">
+                            <h1><span class="glyphicon glyphicon-user" aria-hidden="true"></span> 338</h1>
+                            <a class="btn btn-default disabled-link" href="#" role="button">Join Us Now!</a>
+                            <a class="btn btn-default disabled-link" href="#" role="button">More</a>
                             <div id="date-part" style="width: 100px;"></div>
                         </div>
                     </div>
@@ -181,13 +186,17 @@
             <!-- copyright -->
             <div class="container">
                 <div class="copyright">
-                    <p>Copyright © IACT IEEE -
-                        <a href=""><i class="glyphicon glyphicon-home"></i> Home</a> |
-                        <a href="">FAQ</a> |
-                        <a href="">Contact Us</a>
-                        <a href=""></a>
+                    <p>Copyright © IAUCTB IEEE -
+                        <a href="{{ url('/') }}"><i class="glyphicon glyphicon-home"></i> Home</a> |
+                        <a href="" class="disabled-link">FAQ</a> |
+                        <a href="{{ route('contact') }}">Contact Us</a>
+                        <a href="https://telegram.me/ieeesbiauctb" target="_blank" class="pull-right">Join Our Telegram Channel
+                            <img src="{{ url('/images/Telegram_logo_30.png') }}" alt="">
+                        </a>
                     </p>
+
                 </div>
+
             </div>
 
         </div>

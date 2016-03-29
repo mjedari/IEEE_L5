@@ -34,6 +34,8 @@ class Kernel extends HttpKernel
         'api' => [
             'throttle:60,1',
         ],
+
+        'ip' => [\App\Http\Middleware\IpMiddleware::class],
     ];
 
     /**

@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddGroupColumnToPages extends Migration
+class AddAlbumColumnToTablePosts extends Migration
 {
     /**
      * Run the migrations.
@@ -12,8 +12,8 @@ class AddGroupColumnToPages extends Migration
      */
     public function up()
     {
-        Schema::table('pages', function (Blueprint $table) {
-            $table->string('group')->nullable();
+        Schema::table('posts', function (Blueprint $table) {
+            $table->string('album')->default(false);
         });
     }
 
@@ -24,8 +24,8 @@ class AddGroupColumnToPages extends Migration
      */
     public function down()
     {
-        Schema::table('pages', function (Blueprint $table) {
-            $table->dropColumn('group');
+        Schema::table('posts', function (Blueprint $table) {
+            $table->dropColumn('album');
         });
     }
 }

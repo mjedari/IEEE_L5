@@ -22,9 +22,10 @@ class subscribeController extends Controller
         ]);
 
         $data = $request->all();
-        //dd($data);
 
         $this->subscription->email = $data['email'];
+
+
         try {
             $this->subscription->save();
             return json_encode(['subscribe_status' => true]);

@@ -6,6 +6,7 @@
 
     @section('header')
         {!! Html::style('/css/page.style.css') !!}
+        {!! Html::style('/css/colorbox.css') !!}
     @endsection
 
 @section('content')
@@ -21,27 +22,58 @@
 
     <div class="container main-content">
         <div class="col-md-9 col">
-            <div class="content" >
-
-
-            <div class="row" style="margin: 20px 0 20px 0">
+            <div class="content">
                 @if(!empty($currentPost))
-                @foreach($currentPost[0]['images'] as $img)
-                <div class="col-xs-6 col-md-4">
-                    <a href="{!! route('index')."/".$img !!}" class="thumbnail">
-                        <img src="{!! route('index')."/".$img !!}" alt="...">
-                    </a>
-                </div>
-                @endforeach
-                @else
-                    {!! $pages[0]['body'] !!}
+                    <h3>{!! $currentPost[0]['title'] !!}</h3>
+                    {!! $currentPost[0]['body'] !!}
+
                 @endif
-                {!! var_dump($posts) !!}
-                {!! var_dump($currentPost) !!}
+
+                <div class="row">
+                    @if(!empty($currentPost))
+                    @foreach($currentPost[0]['images'] as $img)
+                    <div class="col-xs-6 col-md-4">
+                        <a href="{!! route('index')."/".$img !!}" class="thumbnail group1" title="{{$currentPost[0]['title']}}">
+                            <img src="{!! route('index')."/".$img !!}" alt="...">
+                        </a>
+                    </div>
+                    @endforeach
+                    @else
+                        <!-- Page Body Is Here-->
+                        {!! $pages[0]['body'] !!}
+                    @endif
+
+                </div>
+
+                @if(!empty($currentPost))
+                    <hr>
+                    <p class="created">
+                        <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
+                        Created at: {{ $currentPost[0]['created_at'] }}
+                    </p>
+                @endif
             </div>
+
+            <div class="main-content-footer">
+                <!-- Start Last News Posts Column -->
+                @if(!empty($lastPosts) and !empty($currentPost))
+                    <div class="last-news">
+                        <h4>Last {{ $pages[0]['title'] }}</h4>
+                        @foreach($lastPosts as $col)
+                            <div class="col-md-4">
+                                <ul>
+                                    @foreach($col as $item)
+                                        <li><a href="{{ route(strtolower($pages[0]["title"])).'/'.str_slug($item, '_') }}">{{ $item }}</a></li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endforeach
+                    </div>
+                @endif
             </div>
         </div>
-        <!-- navbar -->
+
+        <!-- Start Sidebar -->
         <div class="col-md-3">
             <div class="panel panel-info">
                 <div class="panel-heading">
@@ -80,4 +112,6 @@
 
 @section('script')
     {!! Html::script('js/ieee.pages.js') !!}
+    {!! Html::script('js/jquery.colorbox.js') !!}
+
 @endsection

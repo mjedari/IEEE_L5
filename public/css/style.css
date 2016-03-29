@@ -35,6 +35,9 @@ a.disabled-link:hover {
 .red-color {
 	color: #CC0000;
 }
+.decoration-none {
+	text-decoration: none;
+}
 
 /* Navbar Style */
 nav.navbar {
@@ -166,11 +169,14 @@ li.menu-discription {
 	background-color: white;
 }	
 .card-glyph {
-	font-size: 20px;
+	font-size: 40px;
 }
-.card-glyph ~ p {
+.card > h3 {
+	margin: 10px;
+}
+.card > p {
 	color: black;
-	font-size: 12px;
+	font-size: 14px;
 }
 
 /*News & Articles & Workshops*/
@@ -225,14 +231,13 @@ li.menu-discription {
 	margin: 0;
 	padding: 10px;
 }
-
 .news-button {
 	margin: 0;
 }
 .news-thumb {
 	padding: 4px;
 	height: 400px;
-	margin-bottom: 30px;
+	margin-bottom: 80px;
 
 }
 
@@ -272,8 +277,7 @@ li.menu-discription {
 	padding: 0 10px 0 10px;
 }
 .pager {
-	margin-top: 60px;
-	position: relative;
+	margin:10px 0 20px 0;
 }
 .articles-tab {
 	margin-bottom: 10px;
@@ -292,12 +296,20 @@ li.menu-discription {
 	float: left;
 	margin-right: 10px;
 	border-radius: 5px;
+	width: 50px;
 }
 .article-item > a {
+	text-decoration: none;
+}
+.article-item > a > h5 {
 	font-weight: bold;
 	font-size: 12px;
 	color: black;
-	text-decoration: none;
+}
+.article-item > a > p {
+	font-size: 12px;
+	color: black;
+	margin-bottom: 5px;
 }
 .article-detail {
 	font-size: 10px;
@@ -357,11 +369,9 @@ li.menu-discription {
 }
 
 
-
 .subscribe-form {
 	padding: 30px 0 40px 0;
 }
-
 .subscribe-form-body {
 	 color: white;
 	 font-size: 25px;
@@ -422,6 +432,10 @@ li.menu-discription {
 .footer-title > h4 > span {
 	font-size: 14px;
 }
+
+.members > h1{
+	font-size: 60px;
+}
 .ieee-links {
 	 font-size: 12px;
 	 color: gray;
@@ -435,4 +449,7 @@ li.menu-discription {
 	padding-top: 10px;
 	font-size: 13px;
 	color: gray;
+}
+.copyright > p > a {
+	text-decoration: none;
 }

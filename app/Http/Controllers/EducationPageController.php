@@ -30,6 +30,23 @@ class EducationPageController extends Controller
         return view('pages.index',compact('pages', 'posts', 'didYouKnow'),['currentPost' => $this->currentPost]);
     }
 
+    public function courses($slug = '')
+    {
+        $group = 'courses';
+        $category = 'courses';
+        $pages = $this->pageRepository->getPagesWithAllRelations($group);
+        if(empty($pages)){
+            return redirect('errors/404');
+        }
+        $posts = $this->postRepository->getPostsWithSameCategory($category)->get()->toArray();
+        $lastPosts = array_chunk($this->postRepository->getPostsTitleWithSameCategory($category), 3);
+        if(!empty($slug)){
+            $this->currentPost = $this->postRepository->getPostWithSameCategory($group, $slug);
+        }
+        $didYouKnow = $this->pageRepository->getDidYouKnow();
+        return view('pages.courses',compact('pages', 'posts','lastPosts', 'didYouKnow'),['currentPost' => $this->currentPost]);
+    }
+
     public function workshops($slug = '')
     {
         $group = 'workshops';
@@ -38,12 +55,13 @@ class EducationPageController extends Controller
         if(empty($pages)){
             return redirect('errors/404');
         }
-        $posts = $this->postRepository->getPostsTitleWithSameCategory($category);
+        $posts = $this->postRepository->getPostsWithSameCategory($category)->get()->toArray();
+        $lastPosts = array_chunk($this->postRepository->getPostsTitleWithSameCategory($category), 3);
         if(!empty($slug)){
             $this->currentPost = $this->postRepository->getPostWithSameCategory($group, $slug);
         }
         $didYouKnow = $this->pageRepository->getDidYouKnow();
-        return view('pages.index',compact('pages', 'posts', 'didYouKnow'),['currentPost' => $this->currentPost]);
+        return view('pages.workshops',compact('pages', 'posts','lastPosts', 'didYouKnow'),['currentPost' => $this->currentPost]);
     }
 
     public function tutorials($slug = '')
@@ -54,12 +72,13 @@ class EducationPageController extends Controller
         if(empty($pages)){
             return redirect('errors/404');
         }
-        $posts = $this->postRepository->getPostsTitleWithSameCategory($category);
+        $posts = $this->postRepository->getPostsWithSameCategory($category)->get()->toArray();
+        $lastPosts = array_chunk($this->postRepository->getPostsTitleWithSameCategory($category), 3);
         if(!empty($slug)){
             $this->currentPost = $this->postRepository->getPostWithSameCategory($group, $slug);
         }
         $didYouKnow = $this->pageRepository->getDidYouKnow();
-        return view('pages.index',compact('pages', 'posts', 'didYouKnow'),['currentPost' => $this->currentPost]);
+        return view('pages.index',compact('pages', 'posts','lastPosts', 'didYouKnow'),['currentPost' => $this->currentPost]);
     }
 
 }

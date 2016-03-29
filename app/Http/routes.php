@@ -10,7 +10,11 @@
 | and give it the controller to call when that URI is requested.
 |
 */
+Route::get('/coming', function(){
+    return view('errors.coming');
+});
 
+//Middleware that check ip access: use 'ip';
 Route::group(['middleware' => ['web']], function () {
 
 
@@ -63,9 +67,7 @@ Route::group(['middleware' => ['web']], function () {
 
 //    Email Subscribe Route
     Route::post('/subscribe', 'subscribeController@store')->name('emailSubscribe');
-    Route::get('/test', function (){
-        return view('test');
-    });
+
 //    pages route
     Route::get('/newsIndex{page}', 'NewsPageController@indexNews');
     Route::get('/news', 'NewsPageController@index')->name('news');
@@ -73,16 +75,17 @@ Route::group(['middleware' => ['web']], function () {
 
 //    Education Menu
     Route::get('/education', 'EducationPageController@index')->name('education');
+    Route::get('/education/courses/{slug?}', 'EducationPageController@courses')->name('courses');
     Route::get('/education/workshops/{slug?}', 'EducationPageController@workshops')->name('workshops');
     Route::get('/education/tutorials/{slug?}/', 'EducationPageController@tutorials')->name('tutorials');
 
 //    Events Menu
     Route::get('/events', 'EventsPageController@index')->name('events');
-    Route::get('/events/Conferences/{slug?}/', 'EventsPageController@Conferences')->name('conferences');
+    Route::get('/events/ieeeDays/{slug?}/', 'EventsPageController@ieeeDays')->name('ieeeDays');
     Route::get('/events/Competitions/{slug?}/', 'EventsPageController@Competitions')->name('competitions');
-    Route::get('/events/Camps/{slug?}/', 'EventsPageController@Camps')->name('camps');
-    Route::get('/events/Sessions/{slug?}/', 'EventsPageController@Sessions')->name('sessions');
-    Route::get('/events/Calendar/{slug?}/', 'EventsPageController@Calendar')->name('calendar');
+    Route::get('/events/elections/{slug?}/', 'EventsPageController@elections')->name('elections');
+    Route::get('/events/occasions/{slug?}/', 'EventsPageController@occasions')->name('occasions');
+    Route::get('/events/calendar/{slug?}/', 'EventsPageController@Calendar')->name('calendar');
 
 
 //    Publications Menu
@@ -94,7 +97,8 @@ Route::group(['middleware' => ['web']], function () {
 
 //    Media menu
     Route::get('/media', 'MediaPageController@index')->name('media');
-    Route::get('/media/images/{slug?}/', 'MediaPageController@images')->name('images');
+    Route::get('/album/{slug?}', 'MediaPageController@album')->name('album');
+    //Route::get('/media/images/{slug?}/', 'MediaPageController@images')->name('images');
     Route::get('/media/videos/{slug?}/', 'MediaPageController@videos')->name('videos');
 
 //    Chapters Menu
@@ -103,11 +107,16 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('/chapters/chapterThree', 'chaptersController@chapterThree')->name('chapterThree');
 
 //    Awards Menu
-    Route::get('/awards', 'AwardsPageController@index')->name('awards');
+//    Route::get('/awards', 'AwardsPageController@index')->name('awards');
 
-//    Route::controller('/about', 'AboutPageController');
+//    About Menu
+    Route::get('/about/board', 'AboutPageController@board')->name('board');
+    Route::get('/about/{slug?}', 'AboutPageController@index')->name('about');
+
+
+
 //    Contact Menu
-    Route::get('/contact', 'ContactPageController@index')->name('contact');
+    Route::any('/contact', 'ContactPageController@index')->name('contact');
     Route::post('/contact/store', 'ContactPageController@store');
 
 

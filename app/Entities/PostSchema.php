@@ -3,7 +3,6 @@
 namespace App\Entities;
 
 use App\Models\Category;
-use App\Models\Post;
 use Kalnoy\Cruddy\Entity;
 class PostSchema extends Entity {
     protected $result = '';
@@ -24,7 +23,7 @@ class PostSchema extends Entity {
      *
      * @var string
      */
-    protected $defaultOrder = null;
+    protected $defaultOrder = 'id';
 
 
     /**
@@ -43,7 +42,8 @@ class PostSchema extends Entity {
         $schema->text('summary');
         $schema->ckedit('body')->label('Main Content')->required();
         $schema->boolean('slider')->label("Slider Show")->help('slider showing');
-        $field = $schema->image('images');
+        $schema->boolean('album');
+        $field = $schema->image('images')->help('First image is banner of posts and it is not showing in the album');
         $field->many();
         $field = $schema->file('files');
         $field->many();
@@ -63,12 +63,14 @@ class PostSchema extends Entity {
                 $postPage = 'publications';
             } elseif(in_array($subPage, ['images', 'videos'])) {
                 $postPage = 'media';
+            } elseif(in_array($subPage, ['board'])) {
+                $postPage = 'about';
             }
             else {
-                $postPage = null;
+                $postPage = '';
             }
             $this->result = $postPage.'/'.$subPage.'/'.$model->slug;
-            return '<a target="_blank" href="/'.$this->result.'">
+            return '<a target="_blank" href="'.$this->result.'">
             '.$model->title.'</a>';
         })->label('title');
 
@@ -90,7 +92,7 @@ class PostSchema extends Entity {
             $t->row(['user']);
             $t->row(['title']);
             $t->row(['slug','url']);
-            $t->row(['category', 'slider', 'created_at']);
+            $t->row(['category', 'slider','album', 'created_at']);
             $t->row(['subpage']);
             $t->row(['summary']);
             $t->row(['body']);
@@ -111,7 +113,7 @@ class PostSchema extends Entity {
      */
     public function columns($schema)
     {
-        $schema->col('id');
+        $schema->col('id')->reversed();
         $schema->col('utitle');
         $schema->col('category')->help('Show url branch');
         //This is Cruddy main method:

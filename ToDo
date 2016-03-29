@@ -11,10 +11,23 @@ Todo List
 9.Make dynamic middle passage
 + 10.Make media access link
 + 11.news ajax pageinate
-12. add jquery plugin to display media
++ 12. add jquery plugin to display media
 13.responsive news division for display in smaller devices
 14.add created at to news
 15.complete email required error
 16.subscribe button responsive bug
 17.add captcha to contact form
 18.show subscribed emails in admin panel
+19.news margin test
+20.clean migration
++ 21.fix index news tablet view bug
+22.create album paginate
+23.Google reCaptcha
+24.Database Export
+25.Newsletter Sender
+26.search engine
+25.News index page make
+26.Add video play plugin
+27.Ip checker and visitor counter
+28.Add Google analytics script
+29.CSS Colors test

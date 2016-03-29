@@ -29,15 +29,17 @@ class EventsPageController extends Controller
         return view('pages.index',compact('pages', 'posts', 'didYouKnow'),['currentPost' => $this->currentPost]);
     }
 
-    public function Conferences()
+    public function ieeeDays($slug = '')
     {
-        $pageName = 'Conferences';
-        $category = 'Conferences';
+        $pageName = 'ieee_Days';
+        $category = 'ieeeDays';
         $pages = $this->pageRepository->getPagesWithAllRelations($pageName);
         if(empty($pages)){
             return redirect('errors/404');
         }
-        $posts = $this->postRepository->getPostsTitleWithSameCategory($category);
+        $posts = '';
+        //If you want show posts in this pages you should make category with same name;
+        //$posts = $this->postRepository->getPostsTitleWithSameCategory($category);
         if(!empty($slug)){
             $this->currentPost = $this->postRepository->getPostWithSameCategory($pageName, $slug);
         }
@@ -45,15 +47,17 @@ class EventsPageController extends Controller
         return view('pages.index',compact('pages', 'posts', 'didYouKnow'),['currentPost' => $this->currentPost]);
     }
 
-    public function Competitions()
+    public function competitions()
     {
-        $pageName = 'Competitions';
-        $category = 'Competitions';
+        $pageName = 'competitions';
+        $category = 'competitions';
         $pages = $this->pageRepository->getPagesWithAllRelations($pageName);
         if(empty($pages)){
             return redirect('errors/404');
         }
-        $posts = $this->postRepository->getPostsTitleWithSameCategory($category);
+        $posts = '';
+        //If you want show posts in this pages you should make category with same name;
+        //$posts = $this->postRepository->getPostsTitleWithSameCategory($category);
         if(!empty($slug)){
             $this->currentPost = $this->postRepository->getPostWithSameCategory($pageName, $slug);
         }
@@ -61,15 +65,17 @@ class EventsPageController extends Controller
         return view('pages.index',compact('pages', 'posts', 'didYouKnow'),['currentPost' => $this->currentPost]);
     }
 
-    public function Camps()
+    public function elections($slug = '')
     {
-        $pageName = 'Camps';
-        $category = 'Camps';
+        $pageName = 'elections';
+        $category = 'elections';
         $pages = $this->pageRepository->getPagesWithAllRelations($pageName);
         if(empty($pages)){
             return redirect('errors/404');
         }
-        $posts = $this->postRepository->getPostsTitleWithSameCategory($category);
+        $posts = '';
+        //If you want show posts in this pages you should make category with same name;
+        //$posts = $this->postRepository->getPostsTitleWithSameCategory($category);
         if(!empty($slug)){
             $this->currentPost = $this->postRepository->getPostWithSameCategory($pageName, $slug);
         }
@@ -77,15 +83,17 @@ class EventsPageController extends Controller
         return view('pages.index',compact('pages', 'posts', 'didYouKnow'),['currentPost' => $this->currentPost]);
     }
 
-    public function Sessions()
+    public function occasions()
     {
-        $pageName = 'Sessions';
-        $category = 'Sessions';
+        $pageName = 'occasions';
+        $category = 'occasions';
         $pages = $this->pageRepository->getPagesWithAllRelations($pageName);
         if(empty($pages)){
             return redirect('errors/404');
         }
-        $posts = $this->postRepository->getPostsTitleWithSameCategory($category);
+        $posts = '';
+        //If you want show posts in this pages you should make category with same name;
+        //$posts = $this->postRepository->getPostsTitleWithSameCategory($category);
         if(!empty($slug)){
             $this->currentPost = $this->postRepository->getPostWithSameCategory($pageName, $slug);
         }
@@ -101,7 +109,9 @@ class EventsPageController extends Controller
         if(empty($pages)){
             return redirect('errors/404');
         }
-        $posts = $this->postRepository->getPostsTitleWithSameCategory($category);
+        $posts = '';
+        //If you want show posts in this pages you should make category with same name;
+        //$posts = $this->postRepository->getPostsTitleWithSameCategory($category);
         if(!empty($slug)){
             $this->currentPost = $this->postRepository->getPostWithSameCategory($pageName, $slug);
         }

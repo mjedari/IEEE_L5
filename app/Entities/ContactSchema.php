@@ -23,7 +23,7 @@ class ContactSchema extends Entity {
      *
      * @var string
      */
-    protected $defaultOrder = null;
+    protected $defaultOrder = 'created_at';
 
     /**
      * Define some fields.
@@ -33,8 +33,10 @@ class ContactSchema extends Entity {
     public function fields($schema)
     {
         $schema->increments('id');
+        $schema->string('name');
         $schema->string('subject');
         $schema->string('email')->label('Sender Email');
+        $schema->string('phone');
         $schema->text('body');
         $schema->timestamps();
     }
@@ -47,10 +49,12 @@ class ContactSchema extends Entity {
     public function columns($schema)
     {
         //$schema->col('id');
+        $schema->col('name');
         $schema->col('subject');
         $schema->col('email');
+        $schema->col('phone');
         $schema->col('body');
-        $schema->col('updated_at')->reversed();
+        $schema->col('created_at')->reversed();
     }
 
     /**

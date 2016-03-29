@@ -31,20 +31,15 @@ class MediaPageController extends Controller
         return view('pages.index',compact('pages', 'posts', 'didYouKnow'),['currentPost' => $this->currentPost]);
     }
 
-    public function images($slug = '')
+    public function album($slug = '')
     {
-        $pageName = 'images';
         $category = 'album';
-        $pages = $this->pageRepository->getPagesWithAllRelations($pageName);
-        if(empty($pages)){
-            return redirect('errors/404');
-        }
-        $posts = $this->postRepository->getPostsTitleWithSameCategory($category);
+        //you can use getPosts() and change passed parameters name for test better performance
+        $posts = $this->postRepository->getTitleSummarySlugCategoryImages();
         if(!empty($slug)){
-            $this->currentPost = $this->postRepository->getPostsWithAllRelations($slug);
+            $this->currentPost = $this->postRepository->getOnlyImagesTitleSlugCatOfPost($slug);
         }
-        $didYouKnow = $this->pageRepository->getDidYouKnow();
-        return view('pages.index',compact('pages', 'posts', 'didYouKnow'),['currentPost' => $this->currentPost]);
+        return view('pages.album',compact('pages', 'posts'),['currentPost' => $this->currentPost]);
     }
 
     public function videos($slug = '')

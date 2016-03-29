@@ -1,5 +1,5 @@
 @extends('layouts.ieee')
-@section('title', 'My App')
+@section('title', 'IAUCTB')
         @section('header')
             {!! Html::style('/css/style.css') !!}
         @endsection
@@ -82,25 +82,25 @@
 <!-- ======================Main Cards======================= -->
 <section class="main-cards clearfix">
     <div class="container-fulied">
-        <a href="">
+        <a href="" class="disabled-link">
             <div class="col-md-4 col-sm-4 col-xs-12 card text-center">
-                <span class="glyphicon glyphicon-education card-glyph" aria-hidden="true"></span>
-                <h4>Workshops</h4>
-                <p>Join Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloremque ratione tempora repudiandae saepe explicabo soluta quaerat ipsam enim illo animi, doloribus alias, nam dolore error molestias, adipisci beatae eum officiis!</p>
+                <span class="glyphicon glyphicon-user card-glyph" aria-hidden="true"></span>
+                <h3>Join IEEE</h3>
+                <p>As a member of IEEE, you'll receive access to select content, product discounts, and more.</p>
             </div>
         </a>
-        <a href="">
+        <a href="" class="disabled-link">
             <div class="col-md-4 col-sm-4 col-xs-12 card text-center">
-                <span class="glyphicon glyphicon-paperclip card-glyph" aria-hidden="true"></span>
-                <h4>Access Articles</h4>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere fuga, asperiores tempore, voluptatibus, officiis accusantium dolor voluptas deserunt sapiente quam error praesentium! Laudantium voluptas repellat impedit tempora ex distinctio quasi.</p>
+                <span class="glyphicon glyphicon-ok-sign card-glyph" aria-hidden="true"></span>
+                <h3>Sign Up IAUCTB IEEE</h3>
+                <p>You can sign up IAUCTB IEEE site as an IAUCTB (Faculty of Engineering) student.</p>
             </div>
         </a>
-        <a href="">
+        <a href="" class="disabled-link">
             <div class="col-md-4 col-sm-4 col-xs-12 card text-center">
-                <span class="glyphicon glyphicon-film card-glyph" aria-hidden="true"></span>
-                <h4>Mutimedia</h4>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere fuga, asperiores tempore, voluptatibus, officiis accusantium dolor voluptas deserunt sapiente quam error praesentium! Laudantium voluptas repellat impedit tempora ex distinctio quasi.</p>
+                <span class="glyphicon glyphicon-calendar card-glyph" aria-hidden="true"></span>
+                <h3>See Calendar & Share It!</h3>
+                <p>To see and our educational workshops and courses plan and see IAUCTB IEEE last events in general calendar.  </p>
             </div>
         </a>
     </div>
@@ -215,8 +215,8 @@
                 </div>
             </div>
             <!-- subscribe text -->
-            <div class="col-md-8 subscribe-content">
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore reprehenderit unde, rem at vitae fugiat repellat aliquam repellendus temporibus animi, voluptatem reiciendis odio architecto error quos nostrum et iure aliquid?</p>
+            <div class="col-md-8 subscribe-content text-center">
+                <p>Subscribe to the IAUCTB IEEE Newsletters. <br>Stay current, competitive, and informed!</p>
             </div>
             <!-- subscribe form -->
             <div class="container subscribe-form">

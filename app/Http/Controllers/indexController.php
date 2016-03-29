@@ -12,7 +12,7 @@ use App\Models\Category;
 use Symfony\Component\HttpFoundation\Response;
 class indexController extends Controller
 {
-    function __construct(Post $posts , Category $categories, PostRepository $postRepository)
+    function __construct(Post $posts , Category $categories, PostRepository $postRepository, Request $request)
     {
         $this->posts = $posts;
         $this->categories = $categories;
@@ -20,6 +20,7 @@ class indexController extends Controller
     }
 
     public function index(Request $request) {
+
         $slider = $this->postRepository->getSliderWithCategoryName();
         $catNews = $this->categories->where('title', 'News')->get()->toArray()[0]['id'];
         $catWorkshops = $this->categories->where('title', 'workshops')->get()->toArray()[0]['id'];
@@ -33,6 +34,8 @@ class indexController extends Controller
 //        $workshops = $this->posts->where('id', 2);
 //        $classes = $this->posts->where('id', 3);
 //        $articles = $this->posts->where('id', 4);
+
+
 
         if ($request->ajax()) {
             $returnHTML = view('news-ajax', compact('news'))->render();

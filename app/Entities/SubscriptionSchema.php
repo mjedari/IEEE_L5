@@ -16,14 +16,14 @@ class SubscriptionSchema extends Entity {
      *
      * @var string
      */
-    protected $titleAttribute = null;
+    protected $titleAttribute = 'email';
 
     /**
      * The name of the column that will sort data by default.
      *
      * @var string
      */
-    protected $defaultOrder = null;
+    protected $defaultOrder = 'created_at';
 
     /**
      * Define some fields.
@@ -33,7 +33,7 @@ class SubscriptionSchema extends Entity {
     public function fields($schema)
     {
         $schema->increments('id');
-
+        $schema->string('email');
         $schema->timestamps();
     }
 
@@ -45,8 +45,8 @@ class SubscriptionSchema extends Entity {
     public function columns($schema)
     {
         $schema->col('id');
-
-        $schema->col('updated_at')->reversed();
+        $schema->col('email');
+        $schema->col('created_at')->reversed();
     }
 
     /**
